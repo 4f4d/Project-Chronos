@@ -7,7 +7,7 @@ Predictive ICU Early Warning System
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=black)
 ![LightGBM](https://img.shields.io/badge/LightGBM-4.6-02569B)
-![License](https://img.shields.io/badge/License-Academic%20%26%20Research-blue)
+![License](https://img.shields.io/badge/License-AGPL--3.0-blue)
 ![AUROC](https://img.shields.io/badge/Best%20AUROC-0.942-brightgreen)
 ![Models](https://img.shields.io/badge/ML%20Engines-4-orange)
 ![Deployment](https://img.shields.io/badge/Deployment-On--Premise-purple)
@@ -573,4 +573,10 @@ project-chronos/
 
 ## License
 
-This project is developed for academic and research purposes. All datasets used are publicly available under their respective licenses (PhysioNet Credentialed/Open Data Use Agreements, Creative Commons).
+This project is licensed under the [GNU Affero General Public License v3.0](LICENSE). This means you are free to use, modify, and distribute this software, provided that:
+
+- Any derivative work is also licensed under AGPL-3.0
+- Original author attribution is preserved in all copies and derivatives
+- If you deploy a modified version as a network service, you must make the source code available to users of that service
+
+All datasets used are publicly available under their respective licenses (PhysioNet Open Data Use Agreements, Creative Commons).
