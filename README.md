@@ -2,6 +2,16 @@
 
 Predictive ICU Early Warning System
 
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.6-EE4C2C?logo=pytorch&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=black)
+![LightGBM](https://img.shields.io/badge/LightGBM-4.6-02569B)
+![License](https://img.shields.io/badge/License-Academic%20%26%20Research-blue)
+![AUROC](https://img.shields.io/badge/Best%20AUROC-0.942-brightgreen)
+![Models](https://img.shields.io/badge/ML%20Engines-4-orange)
+![Deployment](https://img.shields.io/badge/Deployment-On--Premise-purple)
+
 An on-premise, AI-powered clinical decision support system that predicts three critical ICU events 2-6 hours before onset, using a multi-engine machine learning ensemble, a deterministic physics-based safety net, and multi-agent LLM clinical reasoning.
 
 ![Triage Radar Dashboard](assets/dashboard_triage_radar.png)
