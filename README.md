@@ -74,9 +74,9 @@ Project Chronos addresses this gap through continuous, automated prediction with
     │         │                                                          │
     │         ▼                                                          │
     │   ┌─────────────┐                                                  │
-    │   │  Feature     │  70 engineered features                         │
-    │   │  Engineering │  8 lab missingness flags                        │
-    │   │  Pipeline    │  12 clinical composite scores                   │
+    │   │ Feature     │  70 engineered features                          │
+    │   │ Engineering │  8 lab missingness flags                         │
+    │   │ Pipeline    │  12 clinical composite scores                    │
     │   └──────┬──────┘  35 temporal deltas                              │
     │          │                                                         │
     │          ├──────────────────────────────────────┐                  │
