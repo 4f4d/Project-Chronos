@@ -39,11 +39,11 @@ All processes run on the same machine. The system is designed for a single-node 
           │ POST /api/patient_data
           ▼
  ┌──────────────────────────────────────────────┐
- │                  FastAPI                      │
+ │                  FastAPI                     │
  │                                              │
  │  1. Validate input (Pydantic schema)         │
  │  2. Feature engineering (70 features)        │
- │  3. Run ML ensemble (LGB, XGB, GRU-D, TCN)  │
+ │  3. Run ML ensemble (LGB, XGB, GRU-D, TCN)   │
  │  4. Meta-stacker + isotonic calibration      │
  │  5. Physics engine (DO2, THI, HIS)           │
  │  6. SHAP feature importance                  │
@@ -54,7 +54,7 @@ All processes run on the same machine. The system is designed for a single-node 
           │ WebSocket /ws
           ▼
  ┌──────────────────────────────────────────────┐
- │               React Frontend                  │
+ │               React Frontend                 │
  │                                              │
  │  ┌────────────┐  ┌──────────────┐            │
  │  │ Triage     │  │ Detail       │            │
@@ -66,8 +66,8 @@ All processes run on the same machine. The system is designed for a single-node 
  │  │ Dashboard  │  │ Panel        │            │
  │  └────────────┘  └──────────────┘            │
  │  ┌────────────────────────────────┐          │
- │  │ LLM Clinical Debate           │          │
- │  │ (Hawkeye / Reed / Foreman)    │──────┐   │
+ │  │ LLM Clinical Debate            │          │
+ │  │ (Hawkeye / Reed / Foreman)     │─────-┐   │
  │  └────────────────────────────────┘      │   │
  └──────────────────────────────────────────┼───┘
                                             │ POST /api/chat
@@ -75,7 +75,7 @@ All processes run on the same machine. The system is designed for a single-node 
                                    ┌────────────────┐
                                    │  Ollama        │
                                    │  Med42-v2 8B   │
-                                   │  localhost:11434│
+                                   │ localhost:11434│
                                    └────────────────┘
 ```
 

@@ -68,19 +68,19 @@ Project Chronos addresses this gap through continuous, automated prediction with
 
 ```text
                                     Project Chronos
-    ┌─────────────────────────────────────────────────────────────────────┐
-    │                                                                     │
-    │   Patient Vitals Stream                                             │
-    │         │                                                           │
-    │         ▼                                                           │
-    │   ┌─────────────┐                                                   │
-    │   │  Feature     │  70 engineered features                          │
-    │   │  Engineering │  8 lab missingness flags                         │
-    │   │  Pipeline    │  12 clinical composite scores                    │
+    ┌────────────────────────────────────────────────────────────────────┐
+    │                                                                    │
+    │   Patient Vitals Stream                                            │
+    │         │                                                          │
+    │         ▼                                                          │
+    │   ┌─────────────┐                                                  │
+    │   │  Feature     │  70 engineered features                         │
+    │   │  Engineering │  8 lab missingness flags                        │
+    │   │  Pipeline    │  12 clinical composite scores                   │
     │   └──────┬──────┘  35 temporal deltas                              │
-    │          │                                                          │
-    │          ├──────────────────────────────────────┐                    │
-    │          ▼                                      ▼                   │
+    │          │                                                         │
+    │          ├──────────────────────────────────────┐                  │
+    │          ▼                                      ▼                  │
     │   ┌─────────────────────┐          ┌──────────────────────┐        │
     │   │   ML Ensemble       │          │   Physics Engine     │        │
     │   │                     │          │                      │        │
@@ -97,28 +97,28 @@ Project Chronos addresses this gap through continuous, automated prediction with
     │   │  Isotonic           │                     │                    │
     │   │  Calibration        │                     │                    │
     │   └──────┬──────────────┘                     │                    │
-    │          │                                     │                    │
-    │          └────────────────┬────────────────────┘                    │
-    │                           ▼                                         │
-    │                    ┌─────────────┐                                  │
-    │                    │  Risk Score │                                  │
-    │                    │  + SHAP     │                                  │
-    │                    │  + Alerts   │                                  │
-    │                    └──────┬──────┘                                  │
-    │                           │                                         │
-    │                           ▼                                         │
+    │          │                                    │                    │
+    │          └────────────────┬───────────────────┘                    │
+    │                           ▼                                        │
+    │                    ┌─────────────┐                                 │
+    │                    │  Risk Score │                                 │
+    │                    │  + SHAP     │                                 │
+    │                    │  + Alerts   │                                 │
+    │                    └──────┬──────┘                                 │
+    │                           │                                        │
+    │                           ▼                                        │
     │                    ┌─────────────┐       ┌──────────────────┐      │
     │                    │  FastAPI    │       │  Ollama (Local)  │      │
     │                    │  + WS       │◄─────►│  Med42-v2 8B     │      │
     │                    └──────┬──────┘       │  Clinical LLM    │      │
     │                           │              └──────────────────┘      │
-    │                           ▼                                         │
-    │                    ┌─────────────┐                                  │
-    │                    │  React      │                                  │
-    │                    │  Triage     │                                  │
-    │                    │  Dashboard  │                                  │
-    │                    └─────────────┘                                  │
-    └─────────────────────────────────────────────────────────────────────┘
+    │                           ▼                                        │
+    │                    ┌─────────────┐                                 │
+    │                    │  React      │                                 │
+    │                    │  Triage     │                                 │
+    │                    │  Dashboard  │                                 │
+    │                    └─────────────┘                                 │
+    └────────────────────────────────────────────────────────────────────┘
 ```
 
 The backend is built with FastAPI (Python 3.12) and serves predictions via both REST endpoints and a WebSocket connection for real-time streaming. The frontend is a React application built with Vite, designed for dark-mode ICU workstation displays.
