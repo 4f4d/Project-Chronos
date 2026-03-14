@@ -1,0 +1,30 @@
+{
+  "target": "hypotension",
+  "trained_at": "2026-03-04T23:55:52.393063",
+  "seed": 42,
+  "n_features": 93,
+  "n_engines": 4,
+  "engines": [
+    "lgbm",
+    "xgb",
+    "grud",
+    "tcn"
+  ],
+  "val_auroc": 0.942,
+  "val_auprc": 0.4582,
+  "kfold_auroc_mean": 0.9711,
+  "kfold_auroc_std": 0.0082,
+  "optimal_threshold": 0.1045,
+  "f2_at_threshold": 0.5522,
+  "sensitivity": 0.8877,
+  "specificity": 0.8798,
+  "prediction_horizon_hours": 4,
+  "sequence_length_hours": 12,
+  "sequential_aurocs": {
+    "grud": 0.9737377636363721,
+    "tcn": 0.9538245739647429
+  },
+  "sequential_enabled": true,
+  "calibrated": true,
+  "label_note": null
+}

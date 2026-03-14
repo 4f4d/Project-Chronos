@@ -1,0 +1,28 @@
+{
+  "target": "sepsis",
+  "trained_at": "2026-03-04T22:42:41.575315",
+  "seed": 42,
+  "n_features": 166,
+  "n_engines": 3,
+  "engines": [
+    "lgbm",
+    "xgb",
+    "grud"
+  ],
+  "val_auroc": 0.7183,
+  "val_auprc": 0.085,
+  "kfold_auroc_mean": 0.8172,
+  "kfold_auroc_std": 0.0056,
+  "optimal_threshold": 0.0525,
+  "f2_at_threshold": 0.2751,
+  "sensitivity": 0.7785,
+  "specificity": 0.3573,
+  "prediction_horizon_hours": 4,
+  "sequence_length_hours": 12,
+  "sequential_aurocs": {
+    "grud": 0.8503010136791711
+  },
+  "sequential_enabled": true,
+  "calibrated": true,
+  "label_note": null
+}

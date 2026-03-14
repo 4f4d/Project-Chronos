@@ -1,0 +1,59 @@
+# ============================================================
+# Project Chronos - Backend Requirements
+# Python 3.12 — Apple Silicon (arm64)
+# ============================================================
+
+# --- Core API ---
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+websockets==13.1
+python-multipart==0.0.9
+httpx==0.27.2
+
+# --- Data Engineering ---
+pandas==2.2.3
+numpy==1.26.4               # pinned: catboost==1.2.7 requires numpy<2.0; 1.26.4 is highest compatible
+scikit-learn==1.5.2
+scipy==1.14.1
+pyarrow==18.1.0
+# BUG-CLAUDE-8-1 fix: polars was never imported anywhere — removed.
+
+# --- Machine Learning (Tabular) ---
+lightgbm==4.5.0
+xgboost==2.1.3
+catboost==1.2.7            # 3rd tabular engine: symmetric trees + ordered boosting
+vitaldb==1.1.5
+
+# --- Machine Learning (Sequential / Neural) ---
+# NOTE: torch 2.5.x does not exist for Python 3.13. Minimum is 2.6.0.
+# Install separately with CPU-only wheel (smaller download, works on Apple Silicon via MPS):
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+# Or install from PyPI (includes MPS support natively):
+torch==2.6.0
+
+# --- ECG / Waveform Data ---
+wfdb==4.1.2                # WFDB format reader: PhysioNet ECG .dat/.hea/.atr files (CUDB, SDDB, CinC2009)
+# BUG-CLAUDE-8-2 fix: antropy was never imported — removed.
+
+# --- Class Imbalance --- 
+imbalanced-learn==0.12.4   # SMOTE-ENN, ADASYN, BorderlineSMOTE for rare ICU events
+
+# --- Explainability ---
+shap==0.46.0
+
+# --- Hyperparameter Optimization ---
+optuna==4.1.0
+# BUG-CLAUDE-8-3 fix: optuna-integration was never imported — removed.
+# (The LightGBM/XGBoost Optuna callbacks use base optuna directly.)
+
+# --- Dataset Download ---
+huggingface_hub==0.27.0
+requests==2.32.3
+tqdm==4.67.1
+
+# --- Utilities ---
+pydantic==2.9.2
+# BUG-CLAUDE-8-4 fix: python-dotenv was never imported (no load_dotenv() anywhere) — removed.
+loguru==0.7.2
+joblib==1.4.2
+psutil==6.1.0              # RAM monitoring in prepare_datasets.py --resource-check

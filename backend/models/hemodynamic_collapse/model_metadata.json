@@ -1,0 +1,30 @@
+{
+  "target": "hemodynamic_collapse",
+  "trained_at": "2026-03-05T00:24:18.248956",
+  "seed": 42,
+  "n_features": 114,
+  "n_engines": 4,
+  "engines": [
+    "lgbm",
+    "xgb",
+    "grud",
+    "tcn"
+  ],
+  "val_auroc": 0.6795,
+  "val_auprc": 0.0425,
+  "kfold_auroc_mean": 0.86,
+  "kfold_auroc_std": 0.0585,
+  "optimal_threshold": 0.0525,
+  "f2_at_threshold": 0.2897,
+  "sensitivity": 0.1548,
+  "specificity": 0.9842,
+  "prediction_horizon_hours": 4,
+  "sequence_length_hours": 8,
+  "sequential_aurocs": {
+    "grud": 0.9923859126984127,
+    "tcn": 0.9968005952380953
+  },
+  "sequential_enabled": true,
+  "calibrated": true,
+  "label_note": "Proxy labels: MAP<50 (5+min) OR SpO2<85 (3+min) in VitalDB surgical cases, supplemented with real arrest labels from I-CARE (PhysioNet 2023), Zenodo ETU dataset, CUDB, and SDDB ECG databases."
+}
