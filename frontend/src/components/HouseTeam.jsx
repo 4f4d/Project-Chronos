@@ -176,9 +176,9 @@ async function streamOllamaResponse(systemPrompt, userContent, onToken, onDone, 
                     { role: "system", content: systemPrompt },
                     { role: "user", content: userContent },
                 ],
-                options: { temperature: 0.5, num_predict: 150 },
+                options: { temperature: 0.5, num_predict: 512 },
             }),
-            signal: signal ?? AbortSignal.timeout(30000),
+            signal: signal ?? AbortSignal.timeout(120000),
         });
 
         if (!resp.ok) throw new Error(`Ollama error: ${resp.status}`);
@@ -258,22 +258,31 @@ export default function HouseTeam({ patient }) {
         userScrolledRef.current = distFromBottom > 80;
     };
 
+    const [debateRequested, setDebateRequested] = useState(false);
 
     useEffect(() => {
+        if (!patient) return;
+
+        // When patient changes, reset the debate
+        if (debateAbortRef.current) {
+            debateAbortRef.current.abort();
+        }
+        setMessages([]);
+        setIsThinking(false);
+        setDebateRequested(false);
+        prevPatientId.current = patient.patient_id;
+    }, [patient?.patient_id]);
+
+    function handleStartDebate() {
         if (!patient || !ollamaAvailable) return;
-
-        const isStable = patient.crash_risk_level === "LOW" && patient.crash_probability_score < 30;
-        if (isStable) return;
-
         if (debateAbortRef.current) {
             debateAbortRef.current.abort();
         }
         const controller = new AbortController();
         debateAbortRef.current = controller;
-
-        prevPatientId.current = patient.patient_id;
+        setDebateRequested(true);
         runDebate(patient, controller.signal);
-    }, [patient?.patient_id, patient?.crash_risk_level, ollamaAvailable]);
+    }
 
     async function runDebate(pat, signal) {
         setMessages([]);
@@ -446,11 +455,35 @@ export default function HouseTeam({ patient }) {
             )}
 
             <div className="house-conversation" ref={scrollRef} onScroll={handleScroll}>
-                {messages.length === 0 && !isThinking && (
-                    <div style={{ color: "var(--text-muted)", fontSize: 11, textAlign: "center", padding: "16px 0" }}>
-                        {patient.crash_risk_level === "LOW"
-                            ? `Patient ${patient.patient_id} is stable. No consultation required.`
-                            : "Initiating clinical debate…"}
+                {!debateRequested && !isThinking && messages.length === 0 && (
+                    <div style={{ color: "var(--text-muted)", fontSize: 11, textAlign: "center", padding: "24px 16px", lineHeight: 1.8 }}>
+                        <div style={{ fontSize: 22, marginBottom: 8, opacity: 0.5 }}>🩺</div>
+                        <div style={{ color: "var(--text-secondary)", fontWeight: 600, marginBottom: 10 }}>
+                            Patient {patient.patient_id} Selected
+                        </div>
+                        <div style={{ marginBottom: 14, fontSize: 11 }}>
+                            Run a multi-agent clinical debate to analyze this patient's data from three opposing perspectives.
+                        </div>
+                        <button
+                            onClick={handleStartDebate}
+                            style={{
+                                padding: "8px 20px",
+                                fontSize: 12,
+                                fontWeight: 700,
+                                fontFamily: "var(--font-mono)",
+                                color: "#fff",
+                                background: "linear-gradient(135deg, #0a84ff, #5e5ce6)",
+                                border: "none",
+                                borderRadius: 6,
+                                cursor: "pointer",
+                                letterSpacing: "0.03em",
+                                transition: "opacity 0.2s",
+                            }}
+                            onMouseEnter={e => e.target.style.opacity = "0.85"}
+                            onMouseLeave={e => e.target.style.opacity = "1"}
+                        >
+                            Run Clinical Debate
+                        </button>
                     </div>
                 )}
 

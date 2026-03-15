@@ -67,7 +67,7 @@ Project Chronos addresses this gap through continuous, automated prediction with
 ## System Architecture
 
 ```text
-                                    Project Chronos
+                                 Project Chronos
     ┌────────────────────────────────────────────────────────────────────┐
     │                                                                    │
     │   Patient Vitals Stream                                            │

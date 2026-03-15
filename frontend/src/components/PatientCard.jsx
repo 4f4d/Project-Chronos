@@ -153,25 +153,6 @@ export default function PatientCard({ patient, isSelected, onClick, threshold = 
             <div className="card-header">
                 <span className="patient-id">PATIENT {patient_id}</span>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                    {verdict && (
-                        <span
-                            className="validation-badge"
-                            style={{
-                                fontSize: 9,
-                                fontWeight: 700,
-                                fontFamily: "var(--font-mono)",
-                                padding: "2px 6px",
-                                borderRadius: 4,
-                                background: `${verdict.color}18`,
-                                color: verdict.color,
-                                border: `1px solid ${verdict.color}40`,
-                                whiteSpace: "nowrap",
-                            }}
-                            title={`Ground Truth: ${ground_truth?.max_severity || "Unknown"} | Threshold: ${threshold}%`}
-                        >
-                            {verdict.icon} {verdict.label}
-                        </span>
-                    )}
                     <span className={`crash-score-badge risk-${crash_risk_level}`}>
                         <span className="score-dot" />
                         {scoreDisplay}%
@@ -237,7 +218,7 @@ export default function PatientCard({ patient, isSelected, onClick, threshold = 
                         color: "var(--text-muted)",
                         whiteSpace: "nowrap",
                     }}>
-                        {progress.toFixed(0)}% through stay
+                        est. {ground_truth.hours_remaining?.toFixed(1) ?? "?"}h data remaining
                     </span>
                 )}
             </div>
